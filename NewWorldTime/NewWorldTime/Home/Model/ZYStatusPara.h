@@ -10,6 +10,9 @@
 
 @interface ZYStatusPara : NSObject
 
++ (instancetype)sharedManager;
+
+
 /**
  *  采用OAuth授权方式为必填参数,访问命令牌
  */

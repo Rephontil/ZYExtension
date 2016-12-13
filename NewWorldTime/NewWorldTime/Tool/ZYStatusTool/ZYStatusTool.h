@@ -22,4 +22,9 @@
                      failure:(void(^)(NSError *error))failure;
 
 
++ (void)moreStatusWithMaxId:(NSString *)maxid
+                    success:(void(^)(NSArray *modelArray))success
+                    failure:(void(^)(NSError *error))failure;
+
+
 @end

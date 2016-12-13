@@ -84,7 +84,8 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
     [self.tableView.mj_header beginRefreshing ];
 
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self loadMoreData];
+//        [self loadMoreData];
+        [self otherMethodMoreStatus];
     }];
 }
 
@@ -122,6 +123,30 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
 
 }
 
+- (void)otherMethodNewStatus
+{
+    NSString *sinceId = nil;
+    if (self.status.count) {
+
+        sinceId = [self.status.firstObject idstr];
+
+    }
+    [ZYStatusTool newStatusWithSinceId:sinceId success:^(NSArray *modelArray) {
+
+        [self.tableView.mj_header endRefreshing];
+
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, modelArray.count)];
+        [self.status insertObjects:modelArray atIndexes:indexSet];
+
+        [self.tableView reloadData];
+
+    } failure:^(NSError *error) {
+        ZYLog(@"失败了");
+        
+    }];
+}
+
+
 #pragma mark 获取以前的微博数据
 - (void)loadMoreData
 {
@@ -149,27 +174,29 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
 
 }
 
-- (void)otherMethodNewStatus
+
+- (void)otherMethodMoreStatus
 {
-    NSString *sinceId = nil;
+//    1️⃣设计思路：从数据层获取数据。
+//    目的：获取到更多的旧数据。
+//    条件：需要参数maxid。
+//    目标输出(传递给我的数据)：数据成功的block（输出模型数组给我）。  数据失败的block（失败的原因给我）
+    NSString *maxid = nil;
     if (self.status.count) {
-
-        sinceId = [self.status.firstObject idstr];
-
+        maxid = [NSString stringWithFormat:@"%ld",[self.status.lastObject idstr].integerValue - 1];
     }
-    [ZYStatusTool newStatusWithSinceId:sinceId success:^(NSArray *modelArray) {
 
-        [self.tableView.mj_header endRefreshing];
+    [ZYStatusTool moreStatusWithMaxId:maxid success:^(NSArray *modelArray) {
 
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, modelArray.count)];
-        [self.status insertObjects:modelArray atIndexes:indexSet];
-
+        [self.tableView.mj_footer endRefreshing];
+        [self.status addObjectsFromArray:modelArray];
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
         ZYLog(@"失败了");
 
     }];
+    
 }
 
 

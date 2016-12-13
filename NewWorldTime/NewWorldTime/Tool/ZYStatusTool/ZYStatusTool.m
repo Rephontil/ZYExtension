@@ -27,17 +27,10 @@
                      success:(void(^)(NSArray *modelArray))success
                      failure:(void(^)(NSError *error))failure
 {
-
-    ZYStatusPara *para = [[ZYStatusPara alloc] init];
+    ZYStatusPara *para = [ZYStatusPara sharedManager];
     para.access_token = [ZYAccountTool account].access_token;
 
-//    NSMutableDictionary *paraDic = [NSMutableDictionary dictionary];
-//
-//    paraDic[@"access_token"] = [ZYAccountTool account].access_token;
-
     if (sinceId) {
-
-//            paraDic[@"since_id"] = sinceId;
         para.since_id = sinceId;
     }
 
@@ -59,7 +52,33 @@
         }
     }];
 
+}
+
++ (void)moreStatusWithMaxId:(NSString *)maxid
+                    success:(void(^)(NSArray *modelArray))success
+                    failure:(void(^)(NSError *error))failure
+{
+    ZYStatusPara *para = [ZYStatusPara sharedManager];
+    para.access_token = [ZYAccountTool account].access_token;
+    if (maxid) {
+        para.max_id = maxid;
+    }
+//    网络数据请求
+    [ZYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:para.mj_keyValues progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *dicArray = responseObject[@"statuses"];
+        NSArray *modelArray = [ZYStatus mj_objectArrayWithKeyValuesArray:dicArray];
+        if (success) {
+            success(modelArray);
+        }
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+
+    }];
 
 }
+
 
 @end
