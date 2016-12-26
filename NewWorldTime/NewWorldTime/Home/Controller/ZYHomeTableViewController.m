@@ -23,6 +23,9 @@
 #import "ZYStatusTool.h"
 #import "ZYStatusPara.h"
 
+#import "ZYStatusCell.h"
+#import "ZYStatusFrame.h"
+
 
 @interface ZYHomeTableViewController ()<ZYCoverDelegate>
 @property(nonatomic, weak)ZYTitleButton* titleButton;
@@ -32,6 +35,12 @@
  存放数据源模型数组
  */
 @property (nonatomic, strong)NSMutableArray *status;
+
+/**
+ 存放ViewModel数组
+ */
+@property (nonatomic, strong)NSMutableArray *statusF;
+
 
 
 @end
@@ -57,6 +66,13 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
     return _status;
 }
 
+- (NSMutableArray *)statusF
+{
+    if (_statusF == nil) {
+        _statusF = [[NSMutableArray alloc] initWithCapacity:1];
+    }return _statusF;
+}
+
 // UIBarButtonItem:决定导航条上按钮的内容
 // UINavigationItem:决定导航条上内容
 // UITabBarItem:决定tabBar上按钮的内容
@@ -70,6 +86,7 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
     [self refreshTableView];
 
     self.tableView.tableFooterView = [UIView new];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 10;
 
 }
 
@@ -84,7 +101,7 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
     [self.tableView.mj_header beginRefreshing ];
 
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//        [self loadMoreData];
+       //[self loadMoreData];
         [self otherMethodMoreStatus];
     }];
 }
@@ -126,17 +143,29 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
 - (void)otherMethodNewStatus
 {
     NSString *sinceId = nil;
-    if (self.status.count) {
+    if (self.statusF.count) {
 
-        sinceId = [self.status.firstObject idstr];
+        ZYStatus *status = [self.statusF[0] status];
+        sinceId = [status idstr];
 
     }
     [ZYStatusTool newStatusWithSinceId:sinceId success:^(NSArray *modelArray) {
 
+        [self showNewStatusCount:modelArray.count];
         [self.tableView.mj_header endRefreshing];
 
+        // 模型转换视图模型 CZStatus -> CZStatusFrame
+        NSMutableArray *statusFrames = [NSMutableArray array];
+        for (ZYStatus *status in modelArray) {
+            ZYStatusFrame *statusF = [[ZYStatusFrame alloc] init];
+            statusF.status = status;
+            [statusFrames addObject:statusF];
+
+        }
+
+
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, modelArray.count)];
-        [self.status insertObjects:modelArray atIndexes:indexSet];
+        [self.statusF insertObjects:statusFrames atIndexes:indexSet];
 
         [self.tableView reloadData];
 
@@ -155,7 +184,6 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
     paraDic[@"access_token"] = [ZYAccountTool account].access_token;
 
     long long max_id = [self.status.lastObject idstr].integerValue - 1;
-
     paraDic[@"max_id"] = [NSString stringWithFormat:@"%lld",max_id];
 
     [ZYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:paraDic progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -182,14 +210,24 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
 //    条件：需要参数maxid。
 //    目标输出(传递给我的数据)：数据成功的block（输出模型数组给我）。  数据失败的block（失败的原因给我）
     NSString *maxid = nil;
-    if (self.status.count) {
-        maxid = [NSString stringWithFormat:@"%ld",[self.status.lastObject idstr].integerValue - 1];
+    if (self.statusF.count) {
+        ZYStatus *status = [self.statusF.lastObject status];
+
+        maxid = [NSString stringWithFormat:@"%lld",[status.idstr longLongValue]-1];
+
     }
 
     [ZYStatusTool moreStatusWithMaxId:maxid success:^(NSArray *modelArray) {
 
         [self.tableView.mj_footer endRefreshing];
-        [self.status addObjectsFromArray:modelArray];
+        NSMutableArray *statusFrame = [[NSMutableArray alloc] initWithCapacity:1];
+        for (ZYStatus *stauts in modelArray) {
+            ZYStatusFrame *statusF = [[ZYStatusFrame alloc] init];
+            statusF.status = stauts;
+            [statusFrame addObject:statusF];
+            
+        }
+        [self.statusF addObjectsFromArray:statusFrame];
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
@@ -198,6 +236,51 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
     }];
     
 }
+
+#pragma mark - 展示最新的微博数
+-(void)showNewStatusCount:(NSInteger)count
+{
+    if (count == 0) return;
+
+    // 展示最新的微博数
+    CGFloat h = 35;
+    CGFloat y = CGRectGetMaxY(self.navigationController.navigationBar.frame) - h;
+    CGFloat x = 0;
+    CGFloat w = self.view.width;
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, y, w, h)];
+
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
+    label.textColor = [UIColor whiteColor];
+    label.text = [NSString stringWithFormat:@"最新微博数%ld",count];
+
+    label.textAlignment = NSTextAlignmentCenter;
+
+    // 插入导航控制器下导航条下面
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+
+
+    // 动画往下面平移
+    [UIView animateWithDuration:0.25 animations:^{
+        label.transform = CGAffineTransformMakeTranslation(0, h);
+
+    } completion:^(BOOL finished) {
+
+
+        // 往上面平移
+        [UIView animateWithDuration:0.25 delay:2 options:UIViewAnimationOptionCurveLinear animations:^{
+
+            // 还原
+            label.transform = CGAffineTransformIdentity;
+
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
+
+    }];
+
+}
+
 
 
 - (void)setUpNavigationBar
@@ -268,23 +351,38 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.status.count;
+//    return self.status.count;
+
+    return self.statusF.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseHomeTableViewCellID];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseHomeTableViewCellID];
+//
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseHomeTableViewCellID];
+//    }
+//
+//    ZYStatus *status = self.status[indexPath.row];
+//    [cell.imageView sd_setImageWithURL:status.user.profile_image_url placeholderImage:[UIImage imageNamed:@"movie"]];
+//    cell.textLabel.text = status.created_at;
+//    cell.detailTextLabel.text = status.text;
+//    return cell;
 
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseHomeTableViewCellID];
-    }
-
-    ZYStatus *status = self.status[indexPath.row];
-    [cell.imageView sd_setImageWithURL:status.user.profile_image_url placeholderImage:[UIImage imageNamed:@"movie"]];
-    cell.textLabel.text = status.created_at;
-    cell.detailTextLabel.text = status.text;
+    ZYStatusCell *cell = [ZYStatusCell cellWithTableView:tableView];
+    ZYStatusFrame *statusF = self.statusF[indexPath.row];
+    cell.statusF = statusF;
     return cell;
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZYStatusFrame *statusF = self.statusF[indexPath.row];
+    return  statusF.cellHeight;
+    
 }
 
 

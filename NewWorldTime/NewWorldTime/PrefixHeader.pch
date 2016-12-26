@@ -27,6 +27,18 @@
 #endif
 
 
+
+/*        cell            */
+#define CZStatusCellMargin 10
+#define CZNameFont [UIFont systemFontOfSize:13]
+#define CZTimeFont [UIFont systemFontOfSize:12]
+#define CZSourceFont CZTimeFont
+#define CZTextFont [UIFont systemFontOfSize:15]
+#define CZScreenW [UIScreen mainScreen].bounds.size.width
+
+
+
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

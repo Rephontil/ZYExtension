@@ -13,6 +13,12 @@
 @interface ZYStatus : NSObject<MJKeyValue>
 
 /**
+ *  转发微博
+ */
+@property (nonatomic, strong) ZYStatus *retweeted_status;
+
+
+/**
  *  用户
  */
 @property (nonatomic, strong) ZYUser *user;

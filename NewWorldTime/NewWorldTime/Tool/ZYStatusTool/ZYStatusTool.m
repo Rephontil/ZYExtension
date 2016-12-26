@@ -36,6 +36,7 @@
 
     [ZYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:para.mj_keyValues progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
+        ZYLog(@"%@",responseObject);
         NSArray *dicArray = responseObject[@"statuses"];
 
         NSArray *modelArray = [ZYStatus mj_objectArrayWithKeyValuesArray:dicArray];

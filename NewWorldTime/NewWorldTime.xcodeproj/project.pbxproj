@@ -35,6 +35,13 @@
 		8E80FF491DF332CF00087B3B /* ZYHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E80FF481DF332CE00087B3B /* ZYHttpTool.m */; };
 		8E980B5B1DFF0CA4006B83F9 /* ZYStatusPara.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E980B5A1DFF0CA4006B83F9 /* ZYStatusPara.m */; };
 		8E980B5F1DFF16E9006B83F9 /* ZYStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E980B5E1DFF16E9006B83F9 /* ZYStatusTool.m */; };
+		8E9B88371E0ED64300140611 /* NSDate+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B88361E0ED64300140611 /* NSDate+MJ.m */; };
+		8E9B883B1E0EDFED00140611 /* ZYStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B883A1E0EDFED00140611 /* ZYStatusFrame.m */; };
+		8E9B883D1E0EE93E00140611 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9B883C1E0EE93E00140611 /* AVFoundation.framework */; };
+		8E9B88411E0F5E0000140611 /* ZYStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B88401E0F5E0000140611 /* ZYStatusCell.m */; };
+		8E9B88441E0F647300140611 /* ZYOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B88431E0F647300140611 /* ZYOriginalView.m */; };
+		8E9B88471E0F64B900140611 /* ZYRetweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B88461E0F64B900140611 /* ZYRetweetView.m */; };
+		8E9B884A1E0F64DE00140611 /* ZYStatusToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B88491E0F64DE00140611 /* ZYStatusToolBarView.m */; };
 		8EAB14281DDCD7510029E51C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB14271DDCD7510029E51C /* main.m */; };
 		8EAB142B1DDCD8290029E51C /* ZYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB142A1DDCD8290029E51C /* ZYTabBarController.m */; };
 		8EAB142E1DDCD8430029E51C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB142D1DDCD8430029E51C /* AppDelegate.m */; };
@@ -119,6 +126,19 @@
 		8E980B5A1DFF0CA4006B83F9 /* ZYStatusPara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYStatusPara.m; path = ../../Home/Model/ZYStatusPara.m; sourceTree = "<group>"; };
 		8E980B5D1DFF16E9006B83F9 /* ZYStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYStatusTool.h; sourceTree = "<group>"; };
 		8E980B5E1DFF16E9006B83F9 /* ZYStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYStatusTool.m; sourceTree = "<group>"; };
+		8E9B88351E0ED64300140611 /* NSDate+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MJ.h"; sourceTree = "<group>"; };
+		8E9B88361E0ED64300140611 /* NSDate+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MJ.m"; sourceTree = "<group>"; };
+		8E9B88391E0EDFED00140611 /* ZYStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYStatusFrame.h; sourceTree = "<group>"; };
+		8E9B883A1E0EDFED00140611 /* ZYStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYStatusFrame.m; sourceTree = "<group>"; };
+		8E9B883C1E0EE93E00140611 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8E9B883F1E0F5E0000140611 /* ZYStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYStatusCell.h; sourceTree = "<group>"; };
+		8E9B88401E0F5E0000140611 /* ZYStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYStatusCell.m; sourceTree = "<group>"; };
+		8E9B88421E0F647300140611 /* ZYOriginalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYOriginalView.h; sourceTree = "<group>"; };
+		8E9B88431E0F647300140611 /* ZYOriginalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYOriginalView.m; sourceTree = "<group>"; };
+		8E9B88451E0F64B900140611 /* ZYRetweetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYRetweetView.h; sourceTree = "<group>"; };
+		8E9B88461E0F64B900140611 /* ZYRetweetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYRetweetView.m; sourceTree = "<group>"; };
+		8E9B88481E0F64DE00140611 /* ZYStatusToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYStatusToolBarView.h; sourceTree = "<group>"; };
+		8E9B88491E0F64DE00140611 /* ZYStatusToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYStatusToolBarView.m; sourceTree = "<group>"; };
 		8EAB14271DDCD7510029E51C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8EAB14291DDCD8290029E51C /* ZYTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYTabBarController.h; sourceTree = "<group>"; };
 		8EAB142A1DDCD8290029E51C /* ZYTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTabBarController.m; sourceTree = "<group>"; };
@@ -145,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9B883D1E0EE93E00140611 /* AVFoundation.framework in Frameworks */,
 				8E4F57B61DDCB720004A0990 /* UIKit.framework in Frameworks */,
 				3AA200203F2588A9F472E9AE /* libPods-NewWorldTime.a in Frameworks */,
 			);
@@ -304,6 +325,8 @@
 		8E4F57B01DDCAE96004A0990 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8E9B88351E0ED64300140611 /* NSDate+MJ.h */,
+				8E9B88361E0ED64300140611 /* NSDate+MJ.m */,
 				8E7F6AA61DEA08E600D245B2 /* MBProgressHUD+ZY.h */,
 				8E7F6AA71DEA08E600D245B2 /* MBProgressHUD+ZY.m */,
 				8E6D9D311DE0633400B8EBA8 /* UIViewController+ZYExamine.h */,
@@ -321,6 +344,7 @@
 		8E4F57B41DDCB71F004A0990 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E9B883C1E0EE93E00140611 /* AVFoundation.framework */,
 				8E4F57B51DDCB720004A0990 /* UIKit.framework */,
 				251866AC1FA542DD92BC927A /* libPods-NewWorldTime.a */,
 			);
@@ -428,6 +452,7 @@
 		8E6D9D1E1DDFE71100B8EBA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E9B88381E0EDFC400140611 /* ViewModel */,
 				8E1CC2511DEB496C00EDCC70 /* ZYStatus.h */,
 				8E1CC2521DEB496C00EDCC70 /* ZYStatus.m */,
 				8E1CC2541DEB499900EDCC70 /* ZYUser.h */,
@@ -448,6 +473,7 @@
 		8E6D9D201DDFE71100B8EBA8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E9B883E1E0F5DBD00140611 /* Cell */,
 				8E623B861DE1A812004EF094 /* ZYTitleButton.h */,
 				8E623B871DE1A812004EF094 /* ZYTitleButton.m */,
 				8E623B891DE1AFC7004EF094 /* ZYPopMenu.h */,
@@ -602,6 +628,30 @@
 				8E980B5E1DFF16E9006B83F9 /* ZYStatusTool.m */,
 			);
 			path = ZYStatusTool;
+			sourceTree = "<group>";
+		};
+		8E9B88381E0EDFC400140611 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E9B88391E0EDFED00140611 /* ZYStatusFrame.h */,
+				8E9B883A1E0EDFED00140611 /* ZYStatusFrame.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E9B883E1E0F5DBD00140611 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8E9B883F1E0F5E0000140611 /* ZYStatusCell.h */,
+				8E9B88401E0F5E0000140611 /* ZYStatusCell.m */,
+				8E9B88421E0F647300140611 /* ZYOriginalView.h */,
+				8E9B88431E0F647300140611 /* ZYOriginalView.m */,
+				8E9B88451E0F64B900140611 /* ZYRetweetView.h */,
+				8E9B88461E0F64B900140611 /* ZYRetweetView.m */,
+				8E9B88481E0F64DE00140611 /* ZYStatusToolBarView.h */,
+				8E9B88491E0F64DE00140611 /* ZYStatusToolBarView.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8EAB14261DDCD7510029E51C /* Other */ = {
@@ -810,9 +860,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9B88411E0F5E0000140611 /* ZYStatusCell.m in Sources */,
 				8E7F6A981DE309AC00D245B2 /* ZYNewFeatureController.m in Sources */,
 				8E623B8E1DE1C485004EF094 /* ZYCover.m in Sources */,
+				8E9B88441E0F647300140611 /* ZYOriginalView.m in Sources */,
 				8EBDCC141DEAEED4004B743F /* ZYAccountTool.m in Sources */,
+				8E9B883B1E0EDFED00140611 /* ZYStatusFrame.m in Sources */,
 				8ECD47361DE0B50B001B8534 /* UIBarButtonItem+ZYBarButtonItem.m in Sources */,
 				8E1CC2531DEB496C00EDCC70 /* ZYStatus.m in Sources */,
 				8E6D9D271DDFF45300B8EBA8 /* ZYSearchBar.m in Sources */,
@@ -829,6 +882,7 @@
 				8EBDCC111DEAD91A004B743F /* ZYAccount.m in Sources */,
 				8E980B5F1DFF16E9006B83F9 /* ZYStatusTool.m in Sources */,
 				8E1CC2561DEB499900EDCC70 /* ZYUser.m in Sources */,
+				8E9B88371E0ED64300140611 /* NSDate+MJ.m in Sources */,
 				8E6D9D2A1DDFF75A00B8EBA8 /* UIView+ZYFrame.m in Sources */,
 				8E623B881DE1A812004EF094 /* ZYTitleButton.m in Sources */,
 				8EAB142B1DDCD8290029E51C /* ZYTabBarController.m in Sources */,
@@ -836,9 +890,11 @@
 				8EAB142E1DDCD8430029E51C /* AppDelegate.m in Sources */,
 				8E7F6AA51DE9FFB900D245B2 /* ZYOAuthViewController.m in Sources */,
 				8E7F6AA81DEA08E600D245B2 /* MBProgressHUD+ZY.m in Sources */,
+				8E9B88471E0F64B900140611 /* ZYRetweetView.m in Sources */,
 				8ECD472D1DE0B0E9001B8534 /* ZYHomeTableViewController.m in Sources */,
 				8ECD47301DE0B136001B8534 /* ZYAssistantTableViewController.m in Sources */,
 				8E6D9D301DE061BD00B8EBA8 /* ZYNavigationController.m in Sources */,
+				8E9B884A1E0F64DE00140611 /* ZYStatusToolBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,7 +990,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -975,7 +1031,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
