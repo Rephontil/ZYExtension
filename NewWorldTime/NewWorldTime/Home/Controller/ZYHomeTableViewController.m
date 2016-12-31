@@ -163,7 +163,6 @@ static NSString * const reuseHomeTableViewCellID = @"cell";
 
         }
 
-
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, modelArray.count)];
         [self.statusF insertObjects:statusFrames atIndexes:indexSet];
 

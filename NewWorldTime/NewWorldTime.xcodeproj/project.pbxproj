@@ -20,6 +20,8 @@
 		8E4F57B61DDCB720004A0990 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4F57B51DDCB720004A0990 /* UIKit.framework */; };
 		8E4F57BC1DDCC375004A0990 /* ZYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F57BB1DDCC375004A0990 /* ZYTabBar.m */; };
 		8E4F57C01DDCD33A004A0990 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 8E4F57BF1DDCD33A004A0990 /* PodFile */; };
+		8E57CD6C1E1151410070F28C /* ZYNationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57CD6B1E1151410070F28C /* ZYNationListView.m */; };
+		8E57CD6F1E1154960070F28C /* JXLayoutButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57CD6E1E1154960070F28C /* JXLayoutButton.m */; };
 		8E623B881DE1A812004EF094 /* ZYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E623B871DE1A812004EF094 /* ZYTitleButton.m */; };
 		8E623B8B1DE1AFC7004EF094 /* ZYPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E623B8A1DE1AFC7004EF094 /* ZYPopMenu.m */; };
 		8E623B8E1DE1C485004EF094 /* ZYCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E623B8D1DE1C485004EF094 /* ZYCover.m */; };
@@ -96,6 +98,10 @@
 		8E4F57BB1DDCC375004A0990 /* ZYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTabBar.m; sourceTree = "<group>"; };
 		8E4F57BE1DDCC4C9004A0990 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8E4F57BF1DDCD33A004A0990 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
+		8E57CD6A1E1151410070F28C /* ZYNationListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYNationListView.h; sourceTree = "<group>"; };
+		8E57CD6B1E1151410070F28C /* ZYNationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYNationListView.m; sourceTree = "<group>"; };
+		8E57CD6D1E1154960070F28C /* JXLayoutButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXLayoutButton.h; sourceTree = "<group>"; };
+		8E57CD6E1E1154960070F28C /* JXLayoutButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXLayoutButton.m; sourceTree = "<group>"; };
 		8E623B861DE1A812004EF094 /* ZYTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYTitleButton.h; sourceTree = "<group>"; };
 		8E623B871DE1A812004EF094 /* ZYTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTitleButton.m; sourceTree = "<group>"; };
 		8E623B891DE1AFC7004EF094 /* ZYPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYPopMenu.h; sourceTree = "<group>"; };
@@ -508,6 +514,10 @@
 		8E6D9D241DDFE72000B8EBA8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E57CD6D1E1154960070F28C /* JXLayoutButton.h */,
+				8E57CD6E1E1154960070F28C /* JXLayoutButton.m */,
+				8E57CD6A1E1151410070F28C /* ZYNationListView.h */,
+				8E57CD6B1E1151410070F28C /* ZYNationListView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -862,6 +872,7 @@
 			files = (
 				8E9B88411E0F5E0000140611 /* ZYStatusCell.m in Sources */,
 				8E7F6A981DE309AC00D245B2 /* ZYNewFeatureController.m in Sources */,
+				8E57CD6F1E1154960070F28C /* JXLayoutButton.m in Sources */,
 				8E623B8E1DE1C485004EF094 /* ZYCover.m in Sources */,
 				8E9B88441E0F647300140611 /* ZYOriginalView.m in Sources */,
 				8EBDCC141DEAEED4004B743F /* ZYAccountTool.m in Sources */,
@@ -876,6 +887,7 @@
 				8E80FF491DF332CF00087B3B /* ZYHttpTool.m in Sources */,
 				8E6D9D2D1DDFFAA900B8EBA8 /* ZYDiscoverTableViewController.m in Sources */,
 				8E980B5B1DFF0CA4006B83F9 /* ZYStatusPara.m in Sources */,
+				8E57CD6C1E1151410070F28C /* ZYNationListView.m in Sources */,
 				8E7F6A9B1DE309D400D245B2 /* ZYNewFeatureCell.m in Sources */,
 				8E623B8B1DE1AFC7004EF094 /* ZYPopMenu.m in Sources */,
 				8E1CC2591DEB4AD300EDCC70 /* ZYPhoto.m in Sources */,

@@ -13,10 +13,15 @@
 #import "ZYDiscoverTableViewController.h"
 #import "ZYNavigationController.h"
 #import "ZYHomeTableViewController.h"
+#import "ZYNationListView.h"
 
 @interface ZYTabBarController ()
+{
+    ZYNationListView* view;
 
+}
 @end
+
 
 @implementation ZYTabBarController
 
@@ -50,7 +55,6 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    
     ZYTabBar *tabBar = [[ZYTabBar alloc] initWithFrame:self.tabBar.frame];
     [self setValue:tabBar forKeyPath:@"tabBar"];
     ZYLog(@"%@---->%@",self.tabBar, self.tabBar.subviews);
@@ -74,7 +78,23 @@
     [self setUpChildViewController:VC4 withBadgeValue:@"7" normalImageName:@"tabbar_profile" selectedImageName:@"tabbar_profile_selected" withTitle:@"我"];
     VC4.view.backgroundColor = [UIColor whiteColor];
 
+    view = [[ZYNationListView alloc] initWithFrame:CGRectMake(20, 100, K_SCREEN_WIDTH/2 - 20, 40)];
+    view.leftButtonView.userInteractionEnabled = NO;
+    [view.leftButtonView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [view.leftButtonView setTitle:@"选择国家旗" forState:UIControlStateNormal];
+    [view.leftButtonView setImage:[UIImage imageNamed:@"pay"] forState:UIControlStateNormal];
+    [view.rightImage setImage:[UIImage imageNamed:@"vip"] forState:UIControlStateNormal];
+    [view.rightImage setImage:[UIImage imageNamed:@"like"] forState:UIControlStateHighlighted];
+    [view.rightImage addTarget:self action:@selector(nationChoose:) forControlEvents:UIControlEventTouchUpInside];
+    [VC4.view addSubview:view];
 
+}
+
+- (void)nationChoose:(UIButton *)button
+{
+    ZYLog(@"%s",__func__);
+    [view.leftButtonView setTitle:@"已选择中国" forState:UIControlStateNormal];
+    [view.leftButtonView setImage:[UIImage imageNamed:@"collect"] forState:UIControlStateNormal];
 }
 
 - (UIViewController *)setUpChildViewController:(UIViewController *)uiViewController
